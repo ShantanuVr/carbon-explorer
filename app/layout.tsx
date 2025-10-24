@@ -4,6 +4,8 @@ import '../styles/globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { QueryProvider } from '@/components/QueryProvider'
+import { ThemeProvider } from '@/components/ThemeProvider'
+import { HeaderCapsule } from '@/components/HeaderCapsule'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +23,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <QueryProvider>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <ThemeProvider>
+            <div className="min-h-screen flex flex-col">
+              <Navbar />
+              <HeaderCapsule />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

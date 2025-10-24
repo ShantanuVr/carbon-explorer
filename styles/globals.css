@@ -24,6 +24,18 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    
+    /* Credits theme (green) */
+    --credits-primary: 142.1 76.2% 36.3%;
+    --credits-primary-foreground: 355.7 100% 97.3%;
+    --credits-secondary: 142.1 70.6% 45.3%;
+    --credits-accent: 142.1 70.6% 45.3%;
+    
+    /* Tokens theme (purple) */
+    --tokens-primary: 262.1 83.3% 57.8%;
+    --tokens-primary-foreground: 210 40% 98%;
+    --tokens-secondary: 262.1 83.3% 57.8%;
+    --tokens-accent: 262.1 83.3% 57.8%;
   }
 
   .dark {
@@ -46,6 +58,34 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
+    
+    /* Credits theme (green) - dark mode */
+    --credits-primary: 142.1 70.6% 45.3%;
+    --credits-primary-foreground: 144.9 80.4% 10%;
+    --credits-secondary: 142.1 70.6% 45.3%;
+    --credits-accent: 142.1 70.6% 45.3%;
+    
+    /* Tokens theme (purple) - dark mode */
+    --tokens-primary: 262.1 83.3% 57.8%;
+    --tokens-primary-foreground: 210 40% 98%;
+    --tokens-secondary: 262.1 83.3% 57.8%;
+    --tokens-accent: 262.1 83.3% 57.8%;
+  }
+  
+  /* Credits theme classes */
+  .credits-theme {
+    --primary: var(--credits-primary);
+    --primary-foreground: var(--credits-primary-foreground);
+    --secondary: var(--credits-secondary);
+    --accent: var(--credits-accent);
+  }
+  
+  /* Tokens theme classes */
+  .tokens-theme {
+    --primary: var(--tokens-primary);
+    --primary-foreground: var(--tokens-primary-foreground);
+    --secondary: var(--tokens-secondary);
+    --accent: var(--tokens-accent);
   }
 }
 

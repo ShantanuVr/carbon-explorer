@@ -8,7 +8,8 @@ import { env } from '@/lib/env'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/projects' },
+  { name: 'Credits', href: '/credits' },
+  { name: 'Tokens', href: '/tokens' },
   { name: 'Issuances', href: '/issuances' },
   { name: 'Retirements', href: '/retirements' },
   { name: 'Anchors', href: '/anchors' },
