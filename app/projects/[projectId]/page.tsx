@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound()
   }
 
-  const retirementRate = project.totals.issued > 0 
+  const retirementRate = project.totals && project.totals.issued > 0 
     ? formatPercentage(project.totals.retired, project.totals.issued)
     : '0%'
 
@@ -75,11 +75,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="rounded-lg border bg-card p-6">
           <h3 className="text-sm font-medium text-muted-foreground mb-2">Total Issued</h3>
-          <p className="text-2xl font-bold">{formatNumber(project.totals.issued)}</p>
+          <p className="text-2xl font-bold">{formatNumber(project.totals?.issued || 0)}</p>
         </div>
         <div className="rounded-lg border bg-card p-6">
           <h3 className="text-sm font-medium text-muted-foreground mb-2">Total Retired</h3>
-          <p className="text-2xl font-bold">{formatNumber(project.totals.retired)}</p>
+          <p className="text-2xl font-bold">{formatNumber(project.totals?.retired || 0)}</p>
         </div>
         <div className="rounded-lg border bg-card p-6">
           <h3 className="text-sm font-medium text-muted-foreground mb-2">Retirement Rate</h3>
@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       {/* Vintages */}
-      {project.vintages.length > 0 && (
+      {project.vintages && project.vintages.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Vintages</h2>
           <div className="rounded-lg border bg-card overflow-hidden">
@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </tr>
               </thead>
               <tbody>
-                {project.vintages.map((vintage) => (
+                {project.vintages && project.vintages.map((vintage) => (
                   <tr key={vintage.classId} className="border-t">
                     <td className="px-6 py-3">
                       <Copyable value={vintage.classId} displayValue={vintage.classId.slice(0, 12) + '...'} />
@@ -129,7 +129,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       )}
 
       {/* Evidence */}
-      {project.evidence.length > 0 && (
+      {project.evidence && project.evidence.length > 0 && (
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Evidence</h2>
           <div className="space-y-4">

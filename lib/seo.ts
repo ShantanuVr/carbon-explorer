@@ -9,7 +9,7 @@ export interface SEOProps {
 
 export function generateSEO({
   title = env.NEXT_PUBLIC_BRAND_NAME,
-  description = 'Explore carbon credit projects, issuances, retirements, and evidence anchors in the registry.',
+  description = 'A public explorer with split views for Credits (registry) and Tokens (chain), plus anchors and receipts.',
   image = '/og/default.png',
   url
 }: SEOProps = {}) {

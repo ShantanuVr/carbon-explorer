@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Carbon Credit Explorer',
-  description: 'Explore carbon credit projects, issuances, retirements, and evidence anchors in the registry.',
+  description: 'A public explorer with split views for Credits (registry) and Tokens (chain), plus anchors and receipts.',
 }
 
 export default function RootLayout({

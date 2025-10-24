@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 import { Badge } from '@/components/Badge'
 import { Copyable } from '@/components/Copyable'
 import { ExternalLinkComponent } from '@/components/ExternalLink'
@@ -77,9 +78,9 @@ export default async function IssuancesPage() {
                       <Copyable value={issuance.classId} displayValue={issuance.classId.slice(0, 12) + '...'} />
                     </td>
                     <td className="px-6 py-3">
-                      <ExternalLinkComponent href={`/projects/${issuance.projectId}`}>
+                      <Link href={`/projects/${issuance.projectId}`} className="text-muted-foreground hover:text-foreground transition-colors">
                         {issuance.projectId.slice(0, 8)}...
-                      </ExternalLinkComponent>
+                      </Link>
                     </td>
                     <td className="px-6 py-3 text-sm">
                       {issuance.vintageStart} - {issuance.vintageEnd}
@@ -96,9 +97,9 @@ export default async function IssuancesPage() {
                       </Badge>
                     </td>
                     <td className="px-6 py-3 text-center">
-                      <ExternalLinkComponent href={`/issuances/${issuance.classId}`}>
+                      <Link href={`/issuances/${issuance.classId}`} className="inline-flex items-center justify-center rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
                         View Details
-                      </ExternalLinkComponent>
+                      </Link>
                     </td>
                   </tr>
                 )

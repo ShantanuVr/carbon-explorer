@@ -1,6 +1,7 @@
 {
   "name": "carbon-explorer",
   "version": "0.1.0",
+  "description": "A public explorer with split views for Credits (registry) and Tokens (chain), plus anchors and receipts.",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3002",

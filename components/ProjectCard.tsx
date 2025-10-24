@@ -1,6 +1,6 @@
 import * as React from 'react'
+import Link from 'next/link'
 import { Badge } from './Badge'
-import { ExternalLinkComponent } from './ExternalLink'
 import { Copyable } from './Copyable'
 import { formatNumber, formatPercentage, formatRelativeTime } from '@/lib/format'
 import type { ProjectSummary } from '@/lib/types'
@@ -11,8 +11,10 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
-  const retirementRate = project.totals.issued > 0 
-    ? formatPercentage(project.totals.retired, project.totals.issued)
+  // Add safety check for totals property
+  const totals = project.totals || { issued: 0, retired: 0 }
+  const retirementRate = totals.issued > 0 
+    ? formatPercentage(totals.retired, totals.issued)
     : '0%'
 
   return (
@@ -33,11 +35,11 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">Issued</p>
-          <p className="text-lg font-semibold">{formatNumber(project.totals.issued)}</p>
+          <p className="text-lg font-semibold">{formatNumber(totals.issued)}</p>
         </div>
         <div className="text-center">
           <p className="text-sm text-muted-foreground">Retired</p>
-          <p className="text-lg font-semibold">{formatNumber(project.totals.retired)}</p>
+          <p className="text-lg font-semibold">{formatNumber(totals.retired)}</p>
         </div>
         <div className="text-center">
           <p className="text-sm text-muted-foreground">Rate</p>
@@ -49,9 +51,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="flex items-center gap-2">
           <Copyable value={project.id} displayValue={`ID: ${project.id.slice(0, 8)}...`} />
         </div>
-        <ExternalLinkComponent href={`/projects/${project.id}`}>
+        <Link href={`/projects/${project.id}`} className="inline-flex items-center justify-center rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
           View Details
-        </ExternalLinkComponent>
+        </Link>
       </div>
 
       {project.lastDigestAt && (

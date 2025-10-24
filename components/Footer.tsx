@@ -1,6 +1,6 @@
 import * as React from 'react'
+import Link from 'next/link'
 import { Badge } from './Badge'
-import { ExternalLinkComponent } from './ExternalLink'
 import { env } from '@/lib/env'
 
 interface FooterProps {
@@ -24,8 +24,7 @@ export function Footer({ healthStatus }: FooterProps) {
             <div>
               <h3 className="text-sm font-semibold mb-4">About</h3>
               <p className="text-sm text-muted-foreground">
-                {env.NEXT_PUBLIC_BRAND_NAME} Explorer provides public access to carbon credit 
-                projects, issuances, retirements, and evidence anchors.
+                A public explorer with split views for Credits (registry) and Tokens (chain), plus anchors and receipts.
               </p>
             </div>
             
@@ -58,12 +57,12 @@ export function Footer({ healthStatus }: FooterProps) {
             <div>
               <h3 className="text-sm font-semibold mb-4">Links</h3>
               <div className="space-y-2">
-                <ExternalLinkComponent href="/api/health">
+                <Link href="/api/health" className="text-muted-foreground hover:text-foreground transition-colors">
                   Health Check
-                </ExternalLinkComponent>
-                <ExternalLinkComponent href="/about">
+                </Link>
+                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
                   About
-                </ExternalLinkComponent>
+                </Link>
               </div>
             </div>
           </div>

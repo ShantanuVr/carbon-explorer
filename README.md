@@ -1,6 +1,6 @@
 # Carbon Credit Explorer
 
-A public read-only explorer for the Carbon Credit system that allows users to explore projects, issuances, credits, retirements, evidence anchors, and IoT digests across the Carbon Credit stack.
+A public explorer with split views for Credits (registry) and Tokens (chain), plus anchors and receipts.
 
 ## Features
 

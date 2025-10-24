@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 import { Badge } from '@/components/Badge'
 import { Copyable } from '@/components/Copyable'
 import { ExternalLinkComponent } from '@/components/ExternalLink'
@@ -75,9 +76,9 @@ export default async function TokensPage() {
                     <Badge variant="secondary">{token.quantity} credits</Badge>
                   </div>
                 </div>
-                <ExternalLinkComponent href={`/tokens/${token.tokenId}`}>
+                <Link href={`/tokens/${token.tokenId}`} className="inline-flex items-center justify-center rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
                   View Token Details
-                </ExternalLinkComponent>
+                </Link>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -87,30 +88,35 @@ export default async function TokensPage() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Project</p>
-                  <ExternalLinkComponent href={`/credits/projects/${token.projectId}`}>
+                  <Link href={`/credits/projects/${token.projectId}`} className="text-muted-foreground hover:text-foreground transition-colors">
                     {token.projectId}
-                  </ExternalLinkComponent>
+                  </Link>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Block Number</p>
                   <p className="text-sm font-mono">{formatNumber(token.blockNumber)}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Transaction</p>
-                  <ExternalLinkComponent href={`/tx/${token.txHash}`}>
-                    View Transaction
-                  </ExternalLinkComponent>
+                  <p className="text-sm text-muted-foreground">Transaction Hash</p>
+                  <Copyable value={token.txHash} displayValue={`${token.txHash.slice(0, 12)}...`} />
                 </div>
               </div>
 
-              {token.tokenUri && (
-                <div>
-                  <p className="text-sm text-muted-foreground">Token URI</p>
-                  <ExternalLinkComponent href={token.tokenUri}>
-                    View Metadata
-                  </ExternalLinkComponent>
+              <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                {token.tokenUri && (
+                  <div className="flex-1">
+                    <p className="text-sm text-muted-foreground mb-2">Token URI</p>
+                    <ExternalLinkComponent href={token.tokenUri}>
+                      View Metadata
+                    </ExternalLinkComponent>
+                  </div>
+                )}
+                <div className="flex-shrink-0">
+                  <Link href={`/tx/${token.txHash}`} className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                    View Transaction
+                  </Link>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

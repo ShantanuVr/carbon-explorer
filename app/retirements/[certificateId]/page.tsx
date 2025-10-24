@@ -4,6 +4,7 @@ import { Badge } from '@/components/Badge'
 import { Copyable } from '@/components/Copyable'
 import { ExternalLinkComponent } from '@/components/ExternalLink'
 import { RangePill } from '@/components/RangePill'
+import { PrintButton } from '@/components/PrintButton'
 import { registryApi } from '@/lib/api'
 import { formatNumber, formatDate } from '@/lib/format'
 import { generateCertificateSEO } from '@/lib/seo'
@@ -133,12 +134,9 @@ export default async function RetirementPage({ params }: RetirementPageProps) {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button 
-            onClick={() => window.print()}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
+          <PrintButton className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
             Print Certificate
-          </button>
+          </PrintButton>
           <ExternalLinkComponent href={`/tx/${retirement.onchainHash}`}>
             View on Blockchain
           </ExternalLinkComponent>

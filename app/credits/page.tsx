@@ -13,7 +13,8 @@ export const metadata: Metadata = generateSEO({
 
 async function getProjects() {
   try {
-    return await registryApi.getProjects()
+    const result = await registryApi.getProjects()
+    return result
   } catch (error) {
     console.error('Failed to fetch projects:', error)
     return null
